@@ -65,6 +65,12 @@ export class MonitorComponent implements OnInit {
     await this.monitorService.getAllMonitors()
       .then(response => {
         this.monitorDataSource = new MatTableDataSource<MonitorDTO>(response);
+        this.monitorDataSource.sortingDataAccessor = (item, headerId) => {
+          switch(headerId) {
+            case 'brand': return item.brand.name;
+            default: return item[headerId];
+          }
+        };
         this.monitorDataSource.sort = this.sort;
         this.monitorDataSource.paginator = this.paginator;
       }).catch(error => console.error(error));

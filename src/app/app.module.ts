@@ -21,9 +21,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from "@angular/material/button";
 import {MatSortModule} from "@angular/material/sort";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatPaginatorIntl, MatPaginatorModule} from "@angular/material/paginator";
 import { BrandDialogComponent } from './components/brand/brand-dialog/brand-dialog.component';
 import { MonitorDialogComponent } from './components/monitor/monitor-dialog/monitor-dialog.component';
+import {GlobalService} from "./api/services/global.service";
+import {LocalisationInitializer} from "./localisation-initializer";
 
 @NgModule({
   declarations: [
@@ -56,7 +58,13 @@ import { MonitorDialogComponent } from './components/monitor/monitor-dialog/moni
     MatSortModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [
+    GlobalService,
+    {
+      provide: MatPaginatorIntl,
+      useFactory: () => new LocalisationInitializer().paginatorInitializer(),
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
