@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>
+  {{isNewBrand ? 'Új márka felvétele' : 'Márka adatainak módosítása'}}
+</h2>
+<form [formGroup]="brandForm" (ngSubmit)="closeDialog()">
+  <mat-dialog-content>
+    <mat-grid-list [cols]="global.windowWidth > 500 ? 2 : 1" rowHeight="70px">
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Név</mat-label>
+          <input matInput [formControl]="name" required>
+          <mat-error>
+            A mező kitöltése kötelező
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Székhely</mat-label>
+          <input matInput [formControl]="headquarters" required>
+          <mat-error>
+            A mező kitöltése kötelező
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>CEO (vezérigazgató)</mat-label>
+          <input matInput [formControl]="ceo">
+        </mat-form-field>
+      </mat-grid-tile>
+
+
+    </mat-grid-list>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" type="button" mat-dialog-close>Mégse</button>
+    <button mat-raised-button color="primary" type="submit">
+      {{isNewBrand ? 'Mentés' : 'Módosítás'}}
+    </button>
+  </mat-dialog-actions>
+</form>

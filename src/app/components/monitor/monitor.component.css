@@ -1,0 +1,15 @@
+.mat-column-panelType {
+  flex: 0 0 10%;
+}
+
+.mat-column-aspectRatio {
+  flex: 0 0 10%;
+}
+
+.mat-column-resolution {
+  flex: 0 0 10%;
+}
+
+.mat-column-displaySize {
+  flex: 0 0 10%;
+}

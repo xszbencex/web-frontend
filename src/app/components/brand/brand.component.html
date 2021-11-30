@@ -1,0 +1,45 @@
+<div class="center">
+  <div class="top-row">
+    <button color="primary" mat-raised-button (click)="dialogInit(null)">
+      <mat-icon>add</mat-icon>
+      Új márka felvétele
+    </button>
+  </div>
+
+  <mat-table [dataSource]="brandDataSource" multiTemplateDataRows matSort class="mat-table mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Név</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ceo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>CEO (vezérigazgató)</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.ceo}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="headquarters">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Székhely</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.headquarters}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Műveletek</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="dialogInit(element.id)">
+          <mat-icon>create</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteBrand(element.id)">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let rowNo; columns: displayedColumns"></mat-row>
+
+    <mat-paginator [pageSizeOptions]="[50, 25, 10, 5]" showFirstLastButtons></mat-paginator>
+  </mat-table>
+
+
+</div>

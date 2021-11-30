@@ -1,0 +1,26 @@
+<p>
+  <mat-toolbar color="primary">
+    <a [routerLink]="'/'">
+      <button mat-button>
+        <mat-icon>home</mat-icon>
+        Főoldal
+      </button>
+    </a>
+    <a [routerLink]="'/brand'">
+      <button mat-button>
+        <mat-icon>location_city</mat-icon>
+        Márkák
+      </button>
+    </a>
+    <a [routerLink]="'/monitor'">
+      <button mat-button>
+        <mat-icon>monitor</mat-icon>
+        Monitorok
+      </button>
+    </a>
+    <span class="spacer"></span>
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Kilépés</button>
+  </mat-toolbar>
+</p>
