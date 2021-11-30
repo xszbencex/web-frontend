@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {GlobalService} from "../../api/services/global.service";
+import {Roles} from "../../config/Roles";
 
 @Component({
   selector: 'app-header',
@@ -7,13 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  roles = Roles;
+
+  constructor(public global: GlobalService) { }
 
   ngOnInit(): void {
+
   }
 
   logout() {
-
+    this.global.logout();
   }
 
 }

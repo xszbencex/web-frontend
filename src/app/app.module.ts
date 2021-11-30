@@ -25,7 +25,11 @@ import {MatPaginatorIntl, MatPaginatorModule} from "@angular/material/paginator"
 import { BrandDialogComponent } from './components/brand/brand-dialog/brand-dialog.component';
 import { MonitorDialogComponent } from './components/monitor/monitor-dialog/monitor-dialog.component';
 import {GlobalService} from "./api/services/global.service";
-import {LocalisationInitializer} from "./localisation-initializer";
+import {LocalisationInitializer} from "./config/LocalisationInitializer";
+import { LoginComponent } from './components/login/login.component';
+import {MatCardModule} from "@angular/material/card";
+import { MessageDialogComponent } from './components/message-dialog/message-dialog.component';
+import {appInitProviders} from "./api/services/app-init.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import {LocalisationInitializer} from "./localisation-initializer";
     BrandComponent,
     HeaderComponent,
     BrandDialogComponent,
-    MonitorDialogComponent
+    MonitorDialogComponent,
+    LoginComponent,
+    MessageDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -56,7 +62,8 @@ import {LocalisationInitializer} from "./localisation-initializer";
     MatTooltipModule,
     MatButtonModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule
   ],
   providers: [
     GlobalService,
@@ -64,6 +71,7 @@ import {LocalisationInitializer} from "./localisation-initializer";
       provide: MatPaginatorIntl,
       useFactory: () => new LocalisationInitializer().paginatorInitializer(),
     },
+    appInitProviders
   ],
   bootstrap: [AppComponent]
 })
